@@ -13,7 +13,7 @@ int main() {
 				window.close();
 			}
 		}
-		//lol
+		
 	}
 	return 0;
 }
