@@ -1,5 +1,4 @@
 #pragma once
-#pragma warning(suppress : 4996)
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
@@ -16,5 +15,5 @@ public:
 private:
 	int selected_items;
 	sf::Font font;
-	sf::Text menu[3];
+	sf::Text menu[MAX_ITEMS];
 };

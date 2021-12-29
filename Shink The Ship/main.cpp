@@ -4,7 +4,7 @@
 int main() {
 
 	
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "testi");
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "Sink The Ship");
 
 
 	Main_Menu menu(window.getSize().x, window.getSize().y);
