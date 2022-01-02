@@ -22,7 +22,7 @@ int main() {
 			switch (event.type)
 			{
 				//Movement in main menu
-			case sf::Event::KeyReleased:
+			case sf::Event::KeyPressed:
 				switch (event.key.code)
 				{
 				case sf::Keyboard::Up:
