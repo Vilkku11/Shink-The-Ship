@@ -1,6 +1,7 @@
 #include "SFML/Graphics.hpp"
 #include "Main_Menu.h"
 #include <iostream>
+#include <Windows.h>
 int main() {
 
 	
@@ -58,6 +59,7 @@ int main() {
 
 			window.display();
 		}
+		Sleep(100);
 	}
 
 
