@@ -31,6 +31,19 @@ int main() {
 				case sf::Keyboard::Down:
 					menu.move_down();
 					break;
+				case sf::Keyboard::Return:
+					switch (menu.pressed_key())
+					{
+					case 0:
+						std::cout << "Play" << std::endl;
+						break;
+					case 1:
+						std::cout << "Settings" << std::endl;
+						break;
+					case 2:
+						std::cout << "Exit" << std::endl;
+						break;
+					}
 				}
 			}
 			//Closing window

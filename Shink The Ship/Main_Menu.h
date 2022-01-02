@@ -12,6 +12,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void move_up();
 	void move_down();
+	int pressed_key() { return selected_item; }
 private:
 	int selected_item;
 	sf::Font font;
