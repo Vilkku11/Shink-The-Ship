@@ -11,14 +11,30 @@ int main() {
 
 
 
-	sf::Event e;
+	sf::Event event;
 
 	while (window.isOpen()) {
 
-		while (window.pollEvent(e)) {
+		while (window.pollEvent(event)) {
 
-			if (e.type == sf::Event::Closed) {
+			switch (event.type)
+			{
+			//Movement in main menu
+			case sf::Event::KeyReleased:
+				switch (event.key.code)
+				{
+				case sf::Keyboard::Up:
+					menu.move_up();
+					break;
+				case sf::Keyboard::Down:
+					menu.move_down();
+					break;
+				}
+				//Closing window
+			/*case sf::Event::Closed:
 				window.close();
+				break;*/
+				
 			}
 		}
 	

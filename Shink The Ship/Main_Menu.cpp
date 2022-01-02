@@ -20,6 +20,8 @@ Main_Menu::Main_Menu(float width, float height)
 	menu[2].setFillColor(sf::Color::Blue);
 	menu[2].setString("Exit");
 	menu[2].setPosition(sf::Vector2f(width / 2, (height / 2) +50));
+
+	selected_item = 0;
 }
 
 void Main_Menu::draw(sf::RenderWindow& window)
@@ -28,4 +30,27 @@ void Main_Menu::draw(sf::RenderWindow& window)
 	{
 		window.draw(menu[i]);
 	}
+}
+
+
+void Main_Menu::move_up() 
+{
+	if (selected_item - 1 >= 0)
+	{
+		menu[selected_item].setFillColor(sf::Color::Blue);
+		selected_item--;
+		menu[selected_item].setFillColor(sf::Color::White);
+	}
+
+}
+
+void Main_Menu::move_down()
+{
+	if (selected_item + 1 < MAX_ITEMS)
+	{
+		menu[selected_item].setFillColor(sf::Color::Blue);
+		selected_item++;
+		menu[selected_item].setFillColor(sf::Color::White);
+	}
+
 }
