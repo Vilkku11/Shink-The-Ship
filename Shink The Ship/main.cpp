@@ -24,6 +24,7 @@ int main() {
 
 		while (window.pollEvent(event))
 		{
+			// If in main menu
 			if (main_menu == true)
 			{
 				switch (event.type)
@@ -59,7 +60,7 @@ int main() {
 			
 			// Clear old frame
 			window.clear();
-			// Draw new frame
+			// Check what to draw to the screen
 			if (main_menu == true)
 			{
 				menu.draw(window);
@@ -68,7 +69,7 @@ int main() {
 			{
 				game.draw(window);
 			}
-			//menu.draw(window);
+			
 			//Output new frame
 			window.display();
 		}
