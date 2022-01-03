@@ -1,5 +1,6 @@
 #include "SFML/Graphics.hpp"
 #include "Main_Menu.h"
+#include "Game.h"
 #include <iostream>
 #include <Windows.h>
 int main() {
@@ -7,8 +8,12 @@ int main() {
 	
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Sink The Ship");
 
+	bool main_menu = true;
 
+	// Main Menu class
 	Main_Menu menu(window.getSize().x, window.getSize().y);
+	// Game class
+	Game game(window.getSize().x, window.getSize().y);
 
 
 
@@ -17,46 +22,54 @@ int main() {
 	while (window.isOpen()) 
 	{
 
-		while (window.pollEvent(event)) 
+		while (window.pollEvent(event))
 		{
-
-			switch (event.type)
+			if (main_menu == true)
 			{
-				//Movement in main menu
-			case sf::Event::KeyPressed:
-				switch (event.key.code)
+				switch (event.type)
 				{
-				case sf::Keyboard::Up:
-					menu.move_up();
-					break;
-				case sf::Keyboard::Down:
-					menu.move_down();
-					break;
-				case sf::Keyboard::Return:
-					switch (menu.pressed_key())
+					//Movement in main menu
+				case sf::Event::KeyPressed:
+					switch (event.key.code)
 					{
-					case 0:
-						std::cout << "Play" << std::endl;
+					case sf::Keyboard::Up:
+						menu.move_up();
 						break;
-					case 1:
-						std::cout << "Settings" << std::endl;
+					case sf::Keyboard::Down:
+						menu.move_down();
 						break;
-					case 2:
-						std::cout << "Exit" << std::endl;
-						break;
+					case sf::Keyboard::Return:
+						switch (menu.pressed_key())
+						{
+						case 0:
+							std::cout << "Play" << std::endl;
+							main_menu = false;
+							break;
+						case 1:
+							std::cout << "Settings" << std::endl;
+							break;
+						case 2:
+							std::cout << "Exit" << std::endl;
+							window.close();
+							break;
+						}
 					}
 				}
 			}
-			//Closing window
-			if (event.type == sf::Event::Closed)
-			{
-				window.close();
-			}
-
+			
+			// Clear old frame
 			window.clear();
-
-			menu.draw(window);
-
+			// Draw new frame
+			if (main_menu == true)
+			{
+				menu.draw(window);
+			}
+			else if(main_menu == false)
+			{
+				game.draw(window);
+			}
+			//menu.draw(window);
+			//Output new frame
 			window.display();
 		}
 		Sleep(100);
